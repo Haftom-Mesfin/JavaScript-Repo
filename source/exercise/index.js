@@ -12,17 +12,19 @@ let isAlive = true;
 let message = "";
 // 2. Reassign the message variable to the string we're logging out
 
-if (sum < 21) {
-    message = "Do you want to draw a new card? 🙂"
-} else if (sum === 21) {
-    message = "Wohoo! You've got Blackjack! 🥳"
-    hasBlackJack = true;
-} else {
-    message = "You're out of the game! 😭"
-    isAlive = true;
-}
 
-//Cash out
-console.log(hasBlackJack);
-console.log(isAlive)
-console.log(message)
+function startGame() {
+    console.log("Start game clicked")
+    if (sum < 21) {
+        message = "Do you want to draw a new card? 🙂"
+    } else if (sum === 21) {
+        message = "Wohoo! You've got Blackjack! 🥳"
+        hasBlackJack = true;
+    } else {
+        message = "You're out of the game! 😭"
+        isAlive = true;
+    }
+
+    console.log(message)
+
+}
