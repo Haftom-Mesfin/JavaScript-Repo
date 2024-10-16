@@ -19,9 +19,13 @@ let messageEl = document.getElementById("message-el")
 // 2. Store the sum paragraph in a variable called sumEl
 //let sumEl = document.getElementById("sum-el")
 let sumEl = document.querySelector("#sum-el") // for an id use #, for a class selector use the .
+    // 2. Store the cards paragraph in a variable called cardsEl
+let cardsEl = document.getElementById("cards-el")
 
 function startGame() {
-    // 3. Render the sum on the page using this format -> "Sum: 14"
+    // 3. Render the cards on the page using this format -> "Cards: 10 4"
+    cardsEl.textContent = "Cards: " + firstCard + " " + secondCard
+        // 3. Render the sum on the page using this format -> "Sum: 14"
     sumEl.textContent = "Sum: " + sum
     if (sum < 21) {
         message = "Do you want to draw a new card?"
