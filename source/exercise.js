@@ -45,3 +45,18 @@ if (personAge < 100) {
 } else {
     console.log("Not elegible, you have already gotten one")
 }
+
+
+//
+
+let sentence = ["Hello ", "my ", "name ", "is ", "Per"]
+let greetingEl = document.getElementById("greeting-el")
+
+// Render the sentence in the greetingEl paragraph using a for loop and .textContent
+
+//let str = "";
+for (let i = 0; i < sentence.length; i++) {
+    //str += sentence[i];
+    greetingEl.textContent += sentence[i] + " "
+}
+//greetingEl.textContent = str
