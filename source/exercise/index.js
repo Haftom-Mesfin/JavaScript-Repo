@@ -1,13 +1,15 @@
-// 2. Use getRandomCard() to set the values of firstCard and secondCard
-let firstCard = getRandomCard()
-let secondCard = getRandomCard()
-let cards = [firstCard, secondCard] // array
-let sum = firstCard + secondCard;
-//to track the state of the black jack
+// 2. Create the player object. Give it two keys, name and chips, and set their values
+let player = {
+    name: "Haftom",
+    chips: 100
+}
+let cards = [] // array
+let sum = 0
+    //to track the state of the black jack
 let hasBlackJack = false;
 
 // 1. Create a variable called isAlive and assign it to true
-let isAlive = true;
+let isAlive = false;
 // 2. Flip its value to false in the appropriate code block
 
 // 1. Declare a variable called message and assign its value to an empty string
@@ -24,13 +26,34 @@ let sumEl = document.querySelector("#sum-el") // for an id use #, for a class se
     // 2. Store the cards paragraph in a variable called cardsEl
 let cardsEl = document.getElementById("cards-el")
 
-// Make this function return a random number between 1 and 13
+// 3. Grab ahold of the player-el paragraph and store it in a variable called playerEl
+let playerEl = document.getElementById("player-el")
+    // 4. Render the player's name and chips in playerEl
+playerEl.textContent = player.name + " : $" + player.chips
+    // Make this function return a random number between 1 and 13
 function getRandomCard() {
-    return Math.floor((Math.random() * 13) + 1)
+    let randomNumber = Math.floor(Math.random() * 13) + 1;
+    // if 1 == A    -> return 11 for simplicity
+    if (randomNumber === 1) {
+        return 11
+    } else if (randomNumber > 10) {
+        // if 11-13 == J, Q, K -> return 10
+        return 10
+    }
+
+    return randomNumber
 }
 
 // Create a new function called startGame() that calls renderGame()
 function startGame() {
+    isAlive = true;
+    // Generate two random numbes
+    // Re-assign the cards and sum variables so that the game can start
+    // 2. Use getRandomCard() to set the values of firstCard and secondCard
+    let firstCard = getRandomCard()
+    let secondCard = getRandomCard()
+    cards = [firstCard, secondCard]
+    sum += firstCard + secondCard
     renderGame()
 }
 
@@ -58,11 +81,15 @@ function renderGame() {
 }
 
 function newCard() {
-    // 3. Use the getRandomCard() to set the value of card
-    let card = getRandomCard()
-        // 2. Add the new card to the sum variable
-    sum += card
-    cards.push(card)
-        // 3. Call startGame()
-    renderGame()
+    // Only allow the player to get a new card if she IS alive and does NOT have Blackjack
+    if (isAlive === true && hasBlackJack === false) {
+        // 3. Use the getRandomCard() to set the value of card
+        let card = getRandomCard()
+            // 2. Add the new card to the sum variable
+        sum += card
+        cards.push(card)
+            // 3. Call startGame()
+        renderGame()
+    }
+
 }
